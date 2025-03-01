@@ -1,0 +1,50 @@
+public class StaticExample {
+
+	int nonStaticVar;
+	static int staticVar;
+	final int finalVar = 25;
+	
+	public static void staticMethod1()
+	{
+		staticVar++;
+		//finalVar++; NON STATIC CANNOT BE ACCESSED
+		//nonStaticVar++; NOT ACCESSIBLE
+		System.out.println("Static Variable in Static Method 1 :"+staticVar);
+	}
+	public void nonStaticMethod1()
+	{
+		//finalVar++; //FINAL VAR CANNOT BE CHANGED
+		staticVar++;
+		nonStaticVar++;
+		System.out.println("Static Variable in nonStaticMethod 1 :"+staticVar);
+		System.out.println("Non STatic Variable in nonStaticMethod 1 :"+nonStaticVar);
+	}
+	public static void staticMethod2()
+	{
+		staticVar++;
+		//nonStaticVar++; NOT ACCESSIBLE
+		System.out.println("Static Variable in Static Method 2 :"+staticVar);
+	}
+	public void nonStaticMethod2()
+	{
+		staticVar++;
+		nonStaticVar++;
+		System.out.println("Static Variable in nonStaticMethod 2 :"+staticVar);
+		System.out.println("Non STatic Variable in nonStaticMethod 2 :"+nonStaticVar);
+	
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StaticExample stat1 = new StaticExample();
+		staticMethod1();// s : 1 
+		stat1.nonStaticMethod1(); //s  : 2    ns: 1
+		stat1.nonStaticMethod2();//s : 3   ns: 2
+		StaticExample stat2 = new StaticExample();
+		staticMethod2();//s : 4
+		stat2.nonStaticMethod1();//s : 5 ns: 1
+		stat2.nonStaticMethod2();//s : 6 ns: 2
+
+	}
+
+}
+
